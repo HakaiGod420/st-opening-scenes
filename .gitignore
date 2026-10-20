@@ -1,0 +1,6 @@
+test/mirror/
+test/tmp/
+test/last_merge.jsonl
+test/last_merge.json
+node_modules/
+*.zip

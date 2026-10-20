@@ -1,0 +1,45 @@
+<div class="os-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>Opening Scenes</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down" aria-hidden="true"></div>
+        </div>
+
+        <div class="inline-drawer-content">
+            <p class="os-settings-note">
+                Writes fresh opening messages for a character card. You choose a vibe, it writes the takes,
+                you decide which one becomes the card's first message.
+            </p>
+
+            <label class="os-settings-row">
+                <span>Length</span>
+                <select id="os-set-length" class="text_pole"></select>
+            </label>
+
+            <label class="os-settings-row">
+                <span>Narration</span>
+                <select id="os-set-pov" class="text_pole"></select>
+            </label>
+
+            <label class="os-settings-row">
+                <span>Variants</span>
+                <select id="os-set-count" class="text_pole"></select>
+            </label>
+
+            <label class="os-settings-row os-settings-stack">
+                <span>Standing style notes</span>
+                <textarea id="os-set-extra" class="text_pole" rows="3"
+                    placeholder="Applied to every generation. e.g. keep prose spare, no purple adjectives, present tense only."></textarea>
+            </label>
+
+            <button type="button" id="os-settings-open" class="menu_button">
+                <i class="fa-solid fa-feather-pointed" aria-hidden="true"></i>
+                Open generator
+            </button>
+
+            <p class="os-settings-note os-hint">
+                Also available from the wand menu next to the chat input.
+            </p>
+        </div>
+    </div>
+</div>

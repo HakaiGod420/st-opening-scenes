@@ -1,0 +1,74 @@
+<div class="os-app" id="os-app">
+    <header class="os-head">
+        <div class="os-head-glow" aria-hidden="true"></div>
+
+        <label class="os-char" title="Change character">
+            <div class="os-avatar" id="os-avatar" aria-hidden="true"></div>
+            <div class="os-char-meta">
+                <div class="os-eyebrow">Opening scene for</div>
+                <div class="os-char-row">
+                    <span class="os-char-name" id="os-char-name">Loading…</span>
+                    <i class="fa-solid fa-chevron-down os-char-caret" aria-hidden="true"></i>
+                </div>
+                <div class="os-char-sub" id="os-char-sub"></div>
+            </div>
+            <select class="os-char-native" id="os-char-select" aria-label="Choose character"></select>
+        </label>
+    </header>
+
+    <section class="os-section" id="os-vibe-section">
+        <div class="os-label-row">
+            <span class="os-label">Vibe</span>
+        </div>
+        <div class="os-chips" id="os-vibes" role="group" aria-label="Scene vibe"></div>
+        <p class="os-vibe-hint" id="os-vibe-hint"></p>
+    </section>
+
+    <details class="os-more" id="os-more">
+        <summary class="os-more-summary">
+            <span class="os-more-left">
+                <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                <span>Fine-tune</span>
+            </span>
+            <span class="os-more-value" id="os-more-value"></span>
+        </summary>
+
+        <div class="os-more-body">
+            <div class="os-field">
+                <span class="os-label">Length</span>
+                <div class="os-segmented" id="os-length" role="group" aria-label="Length"></div>
+            </div>
+
+            <div class="os-field">
+                <span class="os-label">Narration</span>
+                <div class="os-segmented" id="os-pov" role="group" aria-label="Narration"></div>
+            </div>
+
+            <div class="os-field os-field-count">
+                <span class="os-label">Variants</span>
+                <div class="os-segmented" id="os-count" role="group" aria-label="Variants"></div>
+            </div>
+
+            <label class="os-field os-field-wide">
+                <span class="os-label">Extra direction <span class="os-optional">optional</span></span>
+                <textarea id="os-direction" class="os-textarea" rows="2"
+                    placeholder="e.g. start in the rain, she should be mid-argument with someone else, keep it under 100 words…"></textarea>
+            </label>
+        </div>
+    </details>
+
+    <div class="os-cta">
+        <button type="button" class="os-btn os-btn-primary" id="os-generate">
+            <i class="fa-solid fa-feather-pointed" aria-hidden="true"></i>
+            <span id="os-generate-label">Generate openings</span>
+        </button>
+        <button type="button" class="os-btn os-btn-ghost os-stop" id="os-stop" hidden>
+            <i class="fa-solid fa-stop" aria-hidden="true"></i>
+            <span>Stop</span>
+        </button>
+    </div>
+
+    <div class="os-status" id="os-status" role="status" aria-live="polite"></div>
+
+    <div class="os-results" id="os-results"></div>
+</div>
