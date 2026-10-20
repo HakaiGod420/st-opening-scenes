@@ -7,7 +7,7 @@
 Pick a vibe. Get a few takes. Keep the one that lands.
 
 [![SillyTavern](https://img.shields.io/badge/SillyTavern-1.19-2f3640?style=flat-square)](https://github.com/SillyTavern/SillyTavern)
-[![version](https://img.shields.io/badge/version-1.1.2-2f3640?style=flat-square)](https://github.com/HakaiGod420/st-opening-scenes/releases)
+[![version](https://img.shields.io/github/v/release/HakaiGod420/st-opening-scenes?style=flat-square&color=2f3640)](https://github.com/HakaiGod420/st-opening-scenes/releases)
 [![license](https://img.shields.io/badge/license-MIT-2f3640?style=flat-square)](LICENSE)
 
 <img src="docs/desktop.png" alt="The Opening Scenes generator, showing two generated openings for a character card" width="880">
