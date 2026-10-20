@@ -1,4 +1,4 @@
-import { renderExtensionTemplateAsync } from '../../../extensions.js';
+import { getContext, renderExtensionTemplateAsync } from '../../../extensions.js';
 import { SlashCommand } from '../../../slash-commands/SlashCommand.js';
 import { ARGUMENT_TYPE, SlashCommandArgument, SlashCommandNamedArgument } from '../../../slash-commands/SlashCommandArgument.js';
 import { SlashCommandParser } from '../../../slash-commands/SlashCommandParser.js';
@@ -6,18 +6,12 @@ import { insertIntoChat } from './src/apply.js';
 import { activeCharacter, generateScenes, listCharacters } from './src/generate.js';
 import { openOpeningScenesModal } from './src/modal.js';
 import { COUNTS, LENGTHS, POVS, VIBES, byId } from './src/prompt.js';
-import { EXTENSION_FOLDER, getSettings, patchSettings } from './src/store.js';
+import { EXTENSION_FOLDER, getSettings } from './src/store.js';
 
 const MENU_ICON = 'fa-feather-pointed';
 const MENU_LABEL = 'Opening Scenes';
 
 /* -------------------------------------------------------------- settings UI */
-
-function fillSelect(select, items, current) {
-    select.innerHTML = items
-        .map(item => `<option value="${item.id}"${item.id === current ? ' selected' : ''}>${item.label}</option>`)
-        .join('');
-}
 
 function initSettingsPanel() {
     const panel = document.querySelector('.os-settings');
@@ -25,26 +19,7 @@ function initSettingsPanel() {
         return;
     }
 
-    const settings = getSettings();
-    const lengthSelect = panel.querySelector('#os-set-length');
-    const povSelect = panel.querySelector('#os-set-pov');
-    const countSelect = panel.querySelector('#os-set-count');
-    const extraInput = panel.querySelector('#os-set-extra');
-    const openButton = panel.querySelector('#os-settings-open');
-
-    fillSelect(lengthSelect, LENGTHS, settings.length);
-    fillSelect(povSelect, POVS, settings.pov);
-    fillSelect(countSelect, COUNTS.map(value => ({ id: String(value), label: `${value} variant${value === 1 ? '' : 's'}` })), String(settings.count));
-    extraInput.value = settings.extraInstructions ?? '';
-
-    lengthSelect.addEventListener('change', () => patchSettings({ length: lengthSelect.value }));
-    povSelect.addEventListener('change', () => patchSettings({ pov: povSelect.value }));
-    countSelect.addEventListener('change', () => {
-        const value = Number(countSelect.value);
-        patchSettings({ count: COUNTS.includes(value) ? value : 2 });
-    });
-    extraInput.addEventListener('input', () => patchSettings({ extraInstructions: extraInput.value }));
-    openButton.addEventListener('click', () => openOpeningScenesModal());
+    panel.querySelector('#os-settings-open')?.addEventListener('click', () => openOpeningScenesModal());
 }
 
 /* --------------------------------------------------------------- wand menu */
@@ -188,6 +163,52 @@ function registerSlashCommand() {
     }));
 }
 
+/* ------------------------------------------------- character edit panel */
+
+function openForEditedCharacter() {
+    const context = getContext();
+    const isCreating = document.getElementById('form_create')?.getAttribute('actiontype') === 'createcharacter';
+    const character = context.characters?.[context.characterId];
+
+    if (isCreating || !character?.avatar) {
+        toastr.info('Save the character first — then its opening scene can be written.', 'Opening Scenes');
+        return;
+    }
+
+    openOpeningScenesModal({ characterId: character.avatar });
+}
+
+/** Adds a feather button next to Advanced Definitions in the character editor. */
+function addCharacterEditorButton() {
+    const block = document.querySelector('.form_create_bottom_buttons_block');
+    if (!block || document.getElementById('os-editor-button')) {
+        return;
+    }
+
+    const button = document.createElement('div');
+    button.id = 'os-editor-button';
+    button.className = `menu_button fa-solid ${MENU_ICON}`;
+    button.setAttribute('role', 'button');
+    button.tabIndex = 0;
+    button.title = 'Opening Scenes — write a first message for this character';
+    button.setAttribute('aria-label', 'Write an opening message for this character');
+
+    button.addEventListener('click', openForEditedCharacter);
+    button.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openForEditedCharacter();
+        }
+    });
+
+    const advanced = document.getElementById('advanced_div');
+    if (advanced && advanced.parentElement === block) {
+        advanced.after(button);
+    } else {
+        block.prepend(button);
+    }
+}
+
 /* -------------------------------------------------------------------- boot */
 
 async function bootstrap() {
@@ -201,6 +222,7 @@ async function bootstrap() {
         console.error('[Opening Scenes] Could not render the settings panel', error);
     }
 
+    addCharacterEditorButton();
     waitForWandMenu();
     registerSlashCommand();
 }

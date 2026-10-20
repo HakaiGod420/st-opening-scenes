@@ -14,6 +14,10 @@
             </div>
             <select class="os-char-native" id="os-char-select" aria-label="Choose character"></select>
         </label>
+
+        <button type="button" class="os-close" id="os-close" aria-label="Close" title="Close (Esc)">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
     </header>
 
     <section class="os-section" id="os-vibe-section">
@@ -53,6 +57,12 @@
                 <span class="os-label">Extra direction <span class="os-optional">optional</span></span>
                 <textarea id="os-direction" class="os-textarea" rows="2"
                     placeholder="e.g. start in the rain, she should be mid-argument with someone else, keep it under 100 words…"></textarea>
+            </label>
+
+            <label class="os-field os-field-wide">
+                <span class="os-label">Always-on notes <span class="os-optional">every generation</span></span>
+                <textarea id="os-extra" class="os-textarea" rows="2"
+                    placeholder="e.g. keep the prose spare, present tense only, no purple adjectives…"></textarea>
             </label>
         </div>
     </details>

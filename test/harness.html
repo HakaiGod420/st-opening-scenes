@@ -196,6 +196,75 @@
 
         .toast.success { border-color: rgba(120, 220, 150, 0.5); }
         .toast.error { border-color: rgba(224, 87, 91, 0.6); }
+
+        /* --- mock of ST's character edit panel ---------------------------- */
+
+        #editor-mock {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 40;
+            width: 300px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(16, 18, 23, 0.92);
+            backdrop-filter: blur(8px);
+        }
+
+        .editor-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .editor-avatar {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+            background: rgba(158, 201, 255, 0.18);
+            font-weight: 600;
+        }
+
+        .editor-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .buttons_block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .menu_button {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            border-radius: 7px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .menu_button:hover {
+            opacity: 1;
+            border-color: rgba(158, 201, 255, 0.5);
+        }
+
+        .editor-hint {
+            margin-top: 9px;
+            font-size: 10.5px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            opacity: 0.35;
+        }
     </style>
 </head>
 
@@ -204,6 +273,27 @@
         <div class="harness-msg"><em>The elevator doors open onto a floor that smells of rain and old
                 paper.</em><br><br>“You’re late,” Aria says, without looking up from the window.</div>
         <div class="harness-msg">“I was starting to think I imagined the application.”</div>
+    </div>
+
+    <!-- Mock of ST's character edit panel, so the injected button can be seen in context -->
+    <div id="editor-mock">
+        <div class="editor-head">
+            <span class="editor-avatar">A</span>
+            <span class="editor-name">Aria Voss</span>
+        </div>
+        <form id="form_create" actiontype="editcharacter">
+            <div class="form_create_bottom_buttons_block buttons_block">
+                <div class="menu_button fa-solid fa-left-long" title="Back"></div>
+                <div class="menu_button fa-solid fa-star" title="Favorite"></div>
+                <div id="advanced_div" class="menu_button fa-solid fa-book" title="Advanced Definitions"></div>
+                <div class="menu_button fa-solid fa-globe" title="Lorebook"></div>
+                <div class="menu_button fa-solid fa-face-smile" title="Connected Personas"></div>
+                <div class="menu_button fa-solid fa-file-export" title="Export"></div>
+                <div class="menu_button fa-solid fa-clone" title="Duplicate"></div>
+                <div class="menu_button fa-solid fa-skull red_button" title="Delete"></div>
+            </div>
+        </form>
+        <div class="editor-hint">character edit panel (mock)</div>
     </div>
 
     <div id="devbar"></div>

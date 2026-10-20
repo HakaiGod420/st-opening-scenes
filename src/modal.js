@@ -1,5 +1,5 @@
 import { getContext, renderExtensionTemplateAsync } from '../../../../extensions.js';
-import { POPUP_TYPE, Popup, callGenericPopup } from '../../../../popup.js';
+import { POPUP_RESULT, POPUP_TYPE, Popup, callGenericPopup } from '../../../../popup.js';
 import { applyAlternateGreeting, applyFirstMessage, copyText, insertIntoChat } from './apply.js';
 import { generateScenes, listCharacters } from './generate.js';
 import { COUNTS, LENGTHS, POVS, VIBES, byId, countWords } from './prompt.js';
@@ -107,6 +107,8 @@ export async function openOpeningScenesModal({ characterId = null } = {}) {
         pov: root.querySelector('#os-pov'),
         count: root.querySelector('#os-count'),
         direction: root.querySelector('#os-direction'),
+        extra: root.querySelector('#os-extra'),
+        close: root.querySelector('#os-close'),
         generate: root.querySelector('#os-generate'),
         generateLabel: root.querySelector('#os-generate-label'),
         stop: root.querySelector('#os-stop'),
@@ -198,6 +200,10 @@ export async function openOpeningScenesModal({ characterId = null } = {}) {
 
         if (el.direction.value !== settings.direction) {
             el.direction.value = settings.direction;
+        }
+
+        if (el.extra.value !== settings.extraInstructions) {
+            el.extra.value = settings.extraInstructions ?? '';
         }
     }
 
@@ -534,6 +540,10 @@ export async function openOpeningScenesModal({ characterId = null } = {}) {
     el.direction.addEventListener('input', () => {
         patchSettings({ direction: el.direction.value });
     });
+
+    el.extra.addEventListener('input', () => {
+        patchSettings({ extraInstructions: el.extra.value });
+    });
     el.direction.addEventListener('keydown', event => {
         if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
             event.preventDefault();
@@ -542,6 +552,10 @@ export async function openOpeningScenesModal({ characterId = null } = {}) {
     });
 
     el.generate.addEventListener('click', () => runGeneration());
+
+    el.close.addEventListener('click', () => {
+        popup.complete(POPUP_RESULT.CANCELLED);
+    });
 
     el.stop.addEventListener('click', () => {
         const ctx = getContext();

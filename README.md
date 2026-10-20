@@ -25,13 +25,20 @@ Built against SillyTavern **1.19.0** (verified imports and API surface against a
 
 ## Usage
 
-Open it from the **wand menu** (feather icon, next to the chat input) or from *Extensions → Opening Scenes → Open generator*.
+Three ways in:
+- the **wand menu** (feather icon, next to the chat input),
+- *Extensions → Opening Scenes → Open generator*,
+- the **feather button in the character edit panel**, next to Advanced Definitions — it opens the generator for the
+  character you are editing (save a new character first).
 
 1. The current character is preselected — click the name to switch to any other card.
 2. Pick a **vibe** (auto, intimate, conflict, warm, mystery, action, comedy, angst, spicy).
-3. Optionally open **Fine-tune** for length, narration perspective, number of variants and free-form direction
-   ("start in the rain, mid-argument with someone else, keep it under 100 words").
+3. Optionally open **Fine-tune** for length, narration perspective, number of variants, per-run direction
+   ("start in the rain, mid-argument with someone else, keep it under 100 words") and always-on style notes that
+   apply to every generation.
 4. Generate. Each take gets a title, word count and its own action row.
+
+Close with the **X** in the top-right corner or `Esc`.
 
 ### Slash command
 
