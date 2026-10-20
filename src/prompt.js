@@ -75,18 +75,21 @@ export const POVS = [
     {
         id: 'second',
         label: 'Second person',
+        short: '2nd',
         hint: '“You step inside…”',
         brief: 'Narrate in second person. The player is "you"; they see, hear and feel the scene but their thoughts and actions are never written for them.',
     },
     {
         id: 'first',
         label: 'First person',
+        short: '1st',
         hint: '“I don’t look up.”',
         brief: 'Narrate in first person from the character\'s own point of view. The player is "you" as seen by the character.',
     },
     {
         id: 'third',
         label: 'Third person',
+        short: '3rd',
         hint: '“She doesn’t look up.”',
         brief: 'Narrate in close third person limited to the character. The player is "you" as seen from outside.',
     },

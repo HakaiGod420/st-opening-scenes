@@ -401,9 +401,13 @@
 }
 
 .os-more-value {
+    min-width: 0;
     font-size: 11.5px;
     color: var(--os-faint);
     text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .os-more-body {
@@ -451,6 +455,8 @@
     font-size: 12px;
     line-height: 1.2;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: pointer;
     opacity: 0.6;
     transition: background 140ms ease, opacity 140ms ease;

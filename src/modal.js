@@ -181,10 +181,12 @@ export async function openOpeningScenesModal({ characterId = null } = {}) {
         el.vibeHint.textContent = byId(VIBES, settings.vibe).brief;
     }
 
-    function segmentHtml({ id, label, hint }, active, group) {
-        const title = hint ? ` title="${escapeHtml(hint)}"` : '';
+    function segmentHtml({ id, label, short, hint }, active, group) {
+        const caption = short ?? label;
+        const title = hint ? `${label} — ${hint}` : label;
         return `<button type="button" class="os-segment${active ? ' is-active' : ''}" data-${group}="${escapeHtml(id)}"
-            aria-pressed="${active ? 'true' : 'false'}"${title}>${escapeHtml(label)}</button>`;
+            aria-pressed="${active ? 'true' : 'false'}" aria-label="${escapeHtml(label)}"
+            title="${escapeHtml(title)}">${escapeHtml(caption)}</button>`;
     }
 
     function renderOptions() {
