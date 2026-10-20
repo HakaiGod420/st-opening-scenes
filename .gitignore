@@ -4,3 +4,4 @@ test/last_merge.jsonl
 test/last_merge.json
 node_modules/
 *.zip
+.gh/
