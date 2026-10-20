@@ -47,18 +47,26 @@ you like where it belongs.
 
 ## Screenshots
 
-| Generator | On a phone |
-|---|---|
-| <img src="docs/desktop.png" alt="Generator modal with two openings"> | <img src="docs/mobile.png" alt="The same modal on a 390px phone screen"> |
+**The generator** — two takes, each with its own apply row:
+
+<img src="docs/desktop.png" alt="Generator modal with two generated openings">
 
 **Fine-tune** — length, narration, variants, per-run direction, and always-on style notes:
 
-<img src="docs/fine-tune.png" alt="The Fine-tune panel: length, narration person, variant count, extra direction and always-on notes" width="880">
+<img src="docs/fine-tune.png" alt="The Fine-tune panel: length, narration person, variant count, extra direction and always-on notes">
+
+<p align="center">
+  <img src="docs/mobile.png" alt="The same modal on a 390px phone screen" width="300"><br>
+  <sub>390px viewport — the sheet goes full-screen, actions stack, targets stay thumb-sized</sub>
+</p>
 
 **Where you open it** — a feather beside Advanced Definitions in the character editor, one click from the card you are
 working on:
 
-<img src="docs/panel.png" alt="Feather button added to the character edit panel" width="330">
+<p align="center">
+  <img src="docs/panel.png" alt="Feather button added to the character edit panel" width="330"><br>
+  <sub>Character editor → Advanced Definitions row → feather</sub>
+</p>
 
 ## Install
 
