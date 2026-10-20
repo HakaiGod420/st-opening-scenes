@@ -28,6 +28,16 @@ console.log('\nparseScenes');
 }
 
 {
+    const out = parseScenes('One.\n\n<<<SCENE>>>\n\nTwo.\n\n<<<SCENE>>>\n\nThree.', { expected: 2 });
+    check('extras beyond requested count are dropped', out.length === 2, JSON.stringify(out.map(s => s.text)));
+}
+
+{
+    const out = parseScenes('One.\n\n<<<SCENE>>>\n\nTwo.', { expected: 3 });
+    check('fewer scenes than requested are kept', out.length === 2, JSON.stringify(out.map(s => s.text)));
+}
+
+{
     const out = parseScenes('Scene 1: The rain came down.\n\nScene 2: The lamp died.', { expected: 2 });
     check('numbered labels', out.length === 2 && !/^Scene 2/.test(out[1].text), JSON.stringify(out.map(s => s.text)));
 }

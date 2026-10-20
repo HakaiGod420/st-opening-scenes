@@ -347,7 +347,7 @@ export function parseScenes(raw, { expected = 1, charName = '' } = {}) {
         scenes = single ? [single] : [];
     }
 
-    return scenes.slice(0, Math.max(expected, 1) + 2).map(text => ({
+    return scenes.slice(0, Math.max(expected, 1)).map(text => ({
         text,
         title: deriveTitle(text),
         words: countWords(text),
