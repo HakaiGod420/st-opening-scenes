@@ -41,6 +41,12 @@
     display: none;
 }
 
+/* ST hides its own close button for TEXT popups; hide it here too so a future
+   version that changes that cannot render a second X next to ours. */
+.os-popup .popup-button-close {
+    display: none !important;
+}
+
 .os-close {
     position: absolute;
     top: 14px;
@@ -138,21 +144,15 @@
     align-items: center;
     padding: 18px 58px 15px 20px;
     border-bottom: 1px solid var(--os-line);
+    /* Full-width layers only: an accent wash fading into the theme tint.
+       A separate positioned gradient element would be clipped into a visible
+       rectangle by its own box, which is exactly what themes with a saturated
+       accent colour showed. */
     background:
-        linear-gradient(180deg, color-mix(in srgb, var(--SmartThemeBlurTintColor) 96%, transparent), color-mix(in srgb, var(--SmartThemeBlurTintColor) 88%, transparent));
+        linear-gradient(180deg, color-mix(in srgb, var(--os-accent) 11%, transparent) 0%, transparent 58%),
+        linear-gradient(180deg, color-mix(in srgb, var(--SmartThemeBlurTintColor) 96%, transparent), color-mix(in srgb, var(--SmartThemeBlurTintColor) 90%, transparent));
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
-}
-
-.os-head-glow {
-    position: absolute;
-    inset: -60% -10% auto auto;
-    width: 260px;
-    height: 260px;
-    pointer-events: none;
-    background: radial-gradient(circle, color-mix(in srgb, var(--os-accent) 26%, transparent), transparent 68%);
-    filter: blur(6px);
-    opacity: 0.55;
 }
 
 .os-char {
